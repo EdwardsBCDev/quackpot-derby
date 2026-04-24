@@ -1,8 +1,8 @@
-import { duckSvg, escapeHtml, formatCountdown, formatMoney, getStandings, getTrack, titleCase } from "/shared-ui.js";
+import { createBrowserId, duckSvg, escapeHtml, formatCountdown, formatMoney, getStandings, getTrack, titleCase } from "/shared-ui.js";
 
 const socket = io();
 const hostKeyStorageKey = "quackpot-host-key";
-const hostKey = localStorage.getItem(hostKeyStorageKey) || crypto.randomUUID();
+const hostKey = localStorage.getItem(hostKeyStorageKey) || createBrowserId("host");
 
 localStorage.setItem(hostKeyStorageKey, hostKey);
 

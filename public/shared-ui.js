@@ -2,6 +2,17 @@ export function formatMoney(value) {
   return `£${Number(value || 0)}`;
 }
 
+export function createBrowserId(prefix = "id") {
+  if (globalThis.crypto?.randomUUID) {
+    return globalThis.crypto.randomUUID();
+  }
+
+  const randomPart = Math.random().toString(36).slice(2);
+  const timePart = Date.now().toString(36);
+
+  return `${prefix}-${timePart}-${randomPart}`;
+}
+
 export function titleCase(value) {
   return `${value || ""}`
     .split("-")

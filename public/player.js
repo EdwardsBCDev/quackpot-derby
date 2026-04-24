@@ -1,9 +1,9 @@
-import { duckSvg, escapeHtml, formatCountdown, formatMoney, getStandings, getTrack, titleCase } from "/shared-ui.js";
+import { createBrowserId, duckSvg, escapeHtml, formatCountdown, formatMoney, getStandings, getTrack, titleCase } from "/shared-ui.js";
 
 const socket = io();
 const playerKeyStorageKey = "quackpot-player-key";
 const playerNameStorageKey = "quackpot-player-name";
-const playerKey = localStorage.getItem(playerKeyStorageKey) || crypto.randomUUID();
+const playerKey = localStorage.getItem(playerKeyStorageKey) || createBrowserId("player");
 const roomFromQuery = new URLSearchParams(window.location.search).get("room") || "";
 
 localStorage.setItem(playerKeyStorageKey, playerKey);
