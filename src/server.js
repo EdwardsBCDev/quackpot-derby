@@ -167,14 +167,16 @@ io.on("connection", (socket) => {
     broadcastRoom(result.roomId);
   });
 
-  socket.on("player:bet", (payload = {}) => {
+  socket.on("player:bet", (payload = {}, callback = () => {}) => {
     const result = hub.placeBet(socket.id, payload.duckNumber, payload.amount);
 
     if (!result.ok) {
       emitError(socket, result.error);
+      callback(result);
       return;
     }
 
+    callback({ ok: true });
     broadcastRoom(result.roomId);
   });
 

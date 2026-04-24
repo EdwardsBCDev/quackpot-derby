@@ -96,10 +96,24 @@ elements.betForm.addEventListener("submit", (event) => {
     return;
   }
 
-  socket.emit("player:bet", {
-    duckNumber: selectedDuckNumber,
-    amount: Number(elements.betAmount.value)
-  });
+  const amount = Number(elements.betAmount.value);
+  const selectedDuck = state.ducks.find((duck) => duck.number === selectedDuckNumber);
+
+  socket.emit(
+    "player:bet",
+    {
+      duckNumber: selectedDuckNumber,
+      amount
+    },
+    (result) => {
+      if (!result?.ok) {
+        showToast(result?.error || "That bet did not lock in.");
+        return;
+      }
+
+      showToast(`Bet locked: ${selectedDuck?.name || `Duck ${selectedDuckNumber}`} for ${formatMoney(amount)}.`);
+    }
+  );
 });
 
 elements.ducksGrid.addEventListener("click", (event) => {
