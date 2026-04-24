@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quackpot Derby</title>
+    <link rel="stylesheet" href="/shared.css" />
+    <style>
+      .home-shell {
+        width: min(1080px, calc(100% - 2rem));
+        margin: 2rem auto;
+        display: grid;
+        gap: 1.5rem;
+      }
+
+      .home-hero {
+        padding: 2rem;
+        display: grid;
+        gap: 1rem;
+      }
+
+      .home-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 1rem;
+      }
+
+      .home-card {
+        padding: 1.5rem;
+        display: grid;
+        gap: 1rem;
+      }
+
+      .home-card p {
+        color: var(--text-soft);
+      }
+
+      .home-list {
+        display: grid;
+        gap: 0.6rem;
+      }
+
+      .home-list span {
+        padding: 0.8rem 0.9rem;
+        border-radius: 1rem;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      @media (max-width: 860px) {
+        .home-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body class="app-body app-body-home">
+    <main class="home-shell">
+      <section class="panel home-hero">
+        <p class="eyebrow">Family Game Night</p>
+        <h1>Quackpot Derby</h1>
+        <p class="hero-copy">
+          One big host screen. Twenty funky ducks. Phone betting by QR code. Big random races with changing leaders and a proper finish.
+        </p>
+        <div class="button-row">
+          <a class="button button-primary" href="/host">Open Host Screen</a>
+          <a class="button button-secondary" href="/play">Join As Player</a>
+        </div>
+      </section>
+
+      <section class="home-grid">
+        <article class="panel home-card">
+          <h2>How It Works</h2>
+          <div class="home-list">
+            <span>1. Host opens the TV screen and gets a room QR code.</span>
+            <span>2. Players scan, enter a name, and receive £10.</span>
+            <span>3. Host opens betting for Race 1.</span>
+            <span>4. Players pick a duck and place a stake.</span>
+            <span>5. Host closes betting, ducks line up, then the race runs.</span>
+          </div>
+        </article>
+
+        <article class="panel home-card">
+          <h2>Design Direction</h2>
+          <p>
+            This rebuild is focused on a two-screen party setup rather than a single-page control panel. The host gets the show. Players get the fastest possible join-and-bet flow.
+          </p>
+          <div class="button-row">
+            <a class="button button-primary" href="/host">Start A Room</a>
+          </div>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>

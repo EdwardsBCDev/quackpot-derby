@@ -1,0 +1,16 @@
+{
+  "name": "quackpot-derby",
+  "version": "0.1.0",
+  "description": "A multiplayer duck betting game for family game night.",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "qrcode": "^1.5.4",
+    "socket.io": "^4.8.1"
+  }
+}

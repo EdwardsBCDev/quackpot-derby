@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join Quackpot Derby</title>
+    <link rel="stylesheet" href="/shared.css" />
+    <link rel="stylesheet" href="/play.css" />
+  </head>
+  <body class="app-body player-body">
+    <main class="player-shell">
+      <section id="join-card" class="panel join-panel">
+        <p class="eyebrow">Join The Race</p>
+        <h1>Quackpot Derby</h1>
+        <p class="hero-copy">Enter the room code, choose your name, grab your £10 balance, and get ready to back a duck.</p>
+
+        <form id="join-form" class="join-form">
+          <label class="field-label" for="room-input">Room Code</label>
+          <input id="room-input" type="text" maxlength="5" placeholder="ABCDE" required />
+          <label class="field-label" for="nickname-input">Your Name</label>
+          <input id="nickname-input" type="text" maxlength="18" placeholder="Captain Nan" required />
+          <button class="button-block primary" type="submit">Join Game</button>
+        </form>
+      </section>
+
+      <section id="player-app" class="player-app hidden">
+        <header class="panel player-header">
+          <div>
+            <p class="eyebrow">Player Screen</p>
+            <h2 id="player-name">Player</h2>
+            <p id="phase-copy" class="hero-copy">Waiting for the host to open betting.</p>
+          </div>
+          <div class="player-header-stats">
+            <div>
+              <span class="label">Balance</span>
+              <strong id="balance">£10</strong>
+            </div>
+            <div>
+              <span class="label">Room</span>
+              <strong id="room-label">ABCDE</strong>
+            </div>
+            <div>
+              <span class="label">Countdown</span>
+              <strong id="countdown">Waiting</strong>
+            </div>
+          </div>
+        </header>
+
+        <section class="panel current-panel">
+          <div class="panel-head">
+            <h2 id="phase-label">Lobby</h2>
+            <span id="bet-label" class="pill pill-soft">No bet yet</span>
+          </div>
+          <p id="track-label" class="hero-copy">Track: Sunset Canal</p>
+        </section>
+
+        <section class="panel betting-panel">
+          <div class="panel-head">
+            <h2>Pick Your Duck</h2>
+          </div>
+          <p id="betting-copy" class="hero-copy">The host has not opened betting yet.</p>
+          <form id="bet-form" class="bet-form">
+            <label class="field-label" for="bet-amount">Stake In Whole Pounds</label>
+            <input id="bet-amount" type="number" min="1" step="1" value="1" />
+            <button id="place-bet" class="button-block primary" type="submit">Place Bet</button>
+          </form>
+          <div id="ducks-grid" class="ducks-grid"></div>
+        </section>
+
+        <section class="panel update-panel">
+          <div class="panel-head">
+            <h2>Race Feed</h2>
+          </div>
+          <div id="result-summary" class="result-summary">Once the race starts, the current leaders and winner will show here.</div>
+          <div id="standings-list" class="standings-list"></div>
+        </section>
+      </section>
+    </main>
+
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="module" src="/player.js"></script>
+  </body>
+</html>

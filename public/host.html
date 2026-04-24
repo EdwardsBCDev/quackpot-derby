@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quackpot Derby Host</title>
+    <link rel="stylesheet" href="/shared.css" />
+    <link rel="stylesheet" href="/host.css" />
+  </head>
+  <body class="app-body host-body">
+    <main class="host-shell">
+      <header class="panel host-header">
+        <div class="host-title">
+          <p class="eyebrow">TV Host Screen</p>
+          <h1>Quackpot Derby</h1>
+          <p class="hero-copy">Scan in, back a duck, then let the river decide.</p>
+        </div>
+        <div class="room-card">
+          <div>
+            <span class="label">Room Code</span>
+            <strong id="room-code" class="room-code">-----</strong>
+          </div>
+          <div>
+            <span class="label">Join Link</span>
+            <strong id="join-url" class="join-url">Waiting for room</strong>
+          </div>
+        </div>
+      </header>
+
+      <section class="host-grid">
+        <aside class="host-left">
+          <article class="panel qr-panel">
+            <div class="panel-head">
+              <h2>Join By QR</h2>
+              <span id="phase-pill" class="pill pill-soft">Lobby</span>
+            </div>
+            <div class="qr-wrap">
+              <img id="qr-image" alt="Join game QR code" />
+            </div>
+            <p class="qr-copy">Players scan, enter their name, receive £10, then wait for betting to open.</p>
+          </article>
+
+          <article class="panel controls-panel">
+            <div class="panel-head">
+              <h2>Host Controls</h2>
+            </div>
+            <label class="field-label" for="track-select">Track</label>
+            <select id="track-select"></select>
+            <div class="control-buttons">
+              <button id="open-betting" class="button-block primary" type="button">Open Betting</button>
+              <button id="close-betting" class="button-block secondary" type="button">Close Bets</button>
+              <button id="reset-game" class="button-block secondary" type="button">Reset Game</button>
+            </div>
+          </article>
+
+          <article class="panel stats-panel">
+            <div class="stats-grid">
+              <div>
+                <span class="label">Players</span>
+                <strong id="player-count">0 / 20</strong>
+              </div>
+              <div>
+                <span class="label">Race</span>
+                <strong id="race-number">Race 1</strong>
+              </div>
+              <div>
+                <span class="label">Countdown</span>
+                <strong id="countdown">Waiting</strong>
+              </div>
+              <div>
+                <span class="label">Track</span>
+                <strong id="track-name">Sunset Canal</strong>
+              </div>
+            </div>
+          </article>
+        </aside>
+
+        <section class="host-centre">
+          <article class="panel race-panel">
+            <div class="race-panel-head">
+              <div>
+                <p class="eyebrow">Main Event</p>
+                <h2 id="phase-title">Lobby Open</h2>
+              </div>
+              <div class="race-meta">
+                <span id="phase-copy" class="pill">Get players joined</span>
+              </div>
+            </div>
+
+            <div id="track-scene" class="track-scene">
+              <div class="scene-sky"></div>
+              <div class="venue-horizon"></div>
+              <div class="scene-bank top"></div>
+              <div class="grandstand"></div>
+              <div class="scene-water"></div>
+              <div class="scene-bank bottom"></div>
+              <div class="course-perspective"></div>
+              <div class="start-line"></div>
+              <div class="finish-line"></div>
+              <div id="camera-chip" class="camera-chip">Bridge Cam</div>
+              <div id="leader-strip" class="leader-strip"></div>
+              <div id="race-stage" class="race-stage"></div>
+              <div class="camera-vignette"></div>
+              <div id="race-announcer" class="race-announcer">Create the room, get everyone in, then open betting.</div>
+            </div>
+
+            <div class="race-bottom-grid">
+              <div class="panel inset-panel">
+                <div class="panel-head compact">
+                  <h3>Top 5</h3>
+                </div>
+                <div id="standings-list" class="standings-list"></div>
+              </div>
+              <div class="panel inset-panel">
+                <div class="panel-head compact">
+                  <h3>Latest Result</h3>
+                </div>
+                <div id="result-summary" class="result-summary">No race run yet.</div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <aside class="host-right">
+          <article class="panel players-panel">
+            <div class="panel-head">
+              <h2>Players</h2>
+            </div>
+            <div id="players-list" class="players-list"></div>
+          </article>
+
+          <article class="panel winners-panel">
+            <div class="panel-head">
+              <h2>Recent Winners</h2>
+            </div>
+            <div id="history-list" class="history-list"></div>
+          </article>
+        </aside>
+      </section>
+    </main>
+
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="module" src="/host.js"></script>
+  </body>
+</html>
